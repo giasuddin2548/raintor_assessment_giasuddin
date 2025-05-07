@@ -19,8 +19,7 @@ Future<void> setup() async {
   HubConnection client = HubConnectionBuilder()
       .withUrl(hubUrl, options: httpOptions)
       .build();
-
-
+  await client.start();
 
   sl.registerSingleton<HubConnection>(client);
   sl.registerSingleton<SocketClient>(SocketClient(sl()));

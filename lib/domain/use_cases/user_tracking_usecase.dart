@@ -12,8 +12,9 @@ class UserTrackingUseCase{
     return await _userTrackerRepo.sendUserAData(lat, lan);
   }
 
-  Future<UserBResponse> getUserBPosition() async{
-    return await _userTrackerRepo.getUserBData();
+
+  Stream<UserBResponse> getUserBStream() {
+    return _userTrackerRepo.getUserBData();
   }
 
 

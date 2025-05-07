@@ -10,16 +10,20 @@ class UserTrackerRepoImpl extends UserTrackerRepo{
 
   UserTrackerRepoImpl(this.socketClient);
 
-
   @override
-  Future<UserBResponse> getUserBData() async{
-    var response =  socketClient.getUserBLocation();
-    return response;
+  Stream<UserBResponse> getUserBData() {
+
+    return socketClient.onUserBLocation;
   }
 
   @override
   Future<String> sendUserAData(double lat, double lan)async {
-    var response = await socketClient.sendUserALocation();
-    return '';
+   var response = await socketClient.sendUserALocation(lat, lan);
+   return response;
   }
+
+
+
+
+
 }
